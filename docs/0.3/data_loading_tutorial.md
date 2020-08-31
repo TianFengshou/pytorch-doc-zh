@@ -40,7 +40,7 @@ plt.ion()   # 交互模式
 
 注解：
 
-点击 [这里 &lt;https://download.pytorch.org/tutorial/faces.zip&gt; `下载数据集, 这些图像在目录 ‘ faces/ ‘下. 这个数据集实际上是从imagenet数据集中选取标记为人脸的一些图片, 使用`dlib’s pose estimation](http://blog.dlib.net/2014/08/real-time-face-pose-estimation.html) 方法生成的.
+点击 [这里 &lt;https://download.pytorch.org/tutorial/faces.zip&gt; `下载数据集, 这些图像在目录 ' faces/ '下. 这个数据集实际上是从imagenet数据集中选取标记为人脸的一些图片, 使用`dlib's pose estimation](http://blog.dlib.net/2014/08/real-time-face-pose-estimation.html) 方法生成的.
 
 数据集中的csv文件记录着标注信息, 像下面这样:
 
@@ -92,7 +92,7 @@ plt.show()
 
 我们为我们的人脸数据集创建一个数据集类. 我们使用 ``__init__``方法来读取csv文件, 使用 ``__getitem__``读取图片. 这样可以使内存高效利用, 因为我们并不需要在内存中一次存储所有图片, 而是按照需要读取.
 
-数据集的一个样例是一个``{‘image’: image, ‘landmarks’: landmarks}``样的字典. 数据集类中有一个可选的参数 `transform` 这样可以对数据集做任何需要的处理. 我们将在下节看到 `transform` 的用处.
+数据集的一个样例是一个``{'image': image, 'landmarks': landmarks}``样的字典. 数据集类中有一个可选的参数 `transform` 这样可以对数据集做任何需要的处理. 我们将在下节看到 `transform` 的用处.
 
 ```py
 class FaceLandmarksDataset(Dataset):
@@ -158,7 +158,7 @@ for i in range(len(face_dataset)):
 
 *   `Rescale`: 修改图片尺寸
 *   `RandomCrop`: 随机裁切图片, 这是数据增强的方法
-*   `ToTensor`: 将numpy格式的图片转为torch格式的图片（我们需要交换坐标轴）
+*   `ToTensor`: 将numpy格式的图片转为torch格式的图片(我们需要交换坐标轴）
 
 我们不将它们写成简单的函数, 而是写成可以调用的类, 这样transform的参数不需要每次都传递 如果需要的话, 我们只需实现 `__call__` 方法和``__init__`` 方法.之后我们可以像下面这 样使用transform:
 
@@ -369,7 +369,7 @@ root/bees/asd932_.png
 
 ```
 
-‘ants’, ‘bees’ 等是图像的类标. 同样, `PIL.Image` 中出现的一般的图像变换像 `RandomHorizontalFlip`, `Scale` 也是可以使用的. 你可以像下面这样用这些函数来写dataloader:
+'ants', 'bees' 等是图像的类标. 同样, `PIL.Image` 中出现的一般的图像变换像 `RandomHorizontalFlip`, `Scale` 也是可以使用的. 你可以像下面这样用这些函数来写dataloader:
 
 ```py
 import torch

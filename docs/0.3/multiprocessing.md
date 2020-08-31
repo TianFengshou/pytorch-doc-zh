@@ -4,7 +4,7 @@
 > 
 > 校对者：[@smilesboy](https://github.com/smilesboy)
 
-torch.multiprocessing 是本地 [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing) 多进程处理模块的一个 wrapper（包装器）. 它通过注册自定义的 reducers（缩减器）, 使用共享内存来提供不同进程中相同数据的共享视图. 一旦 tensor/storage（张量/存储）移动到共享内存 (请参阅 [`share_memory_()`](tensors.html#torch.Tensor.share_memory_ "torch.Tensor.share_memory_")), 就可以将其发送到其他进程而不做任何复制.
+torch.multiprocessing 是本地 [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing) 多进程处理模块的一个 wrapper(包装器）. 它通过注册自定义的 reducers(缩减器）, 使用共享内存来提供不同进程中相同数据的共享视图. 一旦 tensor/storage(张量/存储）移动到共享内存 (请参阅 [`share_memory_()`](tensors.html#torch.Tensor.share_memory_ "torch.Tensor.share_memory_")), 就可以将其发送到其他进程而不做任何复制.
 
 该 API 与原始模块 100% 兼容 - 只需将 `import multiprocessing` 更改为 `import torch.multiprocessing` 就 可以将所有张量通过队列发送, 或通过其它机制共享, 移动到共享内存.
 
@@ -53,7 +53,7 @@ CUDA API 要求输出到其他进程的分配保持有效, 只要它们被它们
 
 注解：
 
-这是默认的策略 (除了不支持的 macOS 和 OS X之外) This is the default strategy (except for macOS and OS X where it’s not supported).
+这是默认的策略 (除了不支持的 macOS 和 OS X之外) This is the default strategy (except for macOS and OS X where it's not supported).
 
 这个策略将使用文件描述符作为共享内存句柄. 无论何时将存储移动到共享内存, 从 `shm_open` 获取的文件描述符都将与该对象一起缓存, 并且当将要将其发送到其他进程时, 文件描述符将被传送 (例如, 通过 UNIX sockets) 到其中. 接收器还将缓存文件描述符并对其进行 `mmap`, 以获得存储数据的共享视图.
 

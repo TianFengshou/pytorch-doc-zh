@@ -10,7 +10,7 @@
 
 **不要在训练循环中积累历史记录。** 默认情况下，涉及需要梯度计算的变量将保留历史记录。这意味着您应该避免在计算中使用这些变量，因为这些变量将超出您的训练循环，例如，在跟踪统计数据时。相反，您应该分离变量或访问其基础数据。  
 
-有时，当可微分变量发生时，它可能是不明显的。考虑以下训练循环（从[源代码](https://discuss.pytorch.org/t/high-memory-usage-while-training/162)中删除）：  
+有时，当可微分变量发生时，它可能是不明显的。考虑以下训练循环(从[源代码](https://discuss.pytorch.org/t/high-memory-usage-while-training/162)中删除）：  
 
 
 ```py
@@ -25,7 +25,7 @@ for i in range(10000):
 
 ```    
 
-在这里，total_loss在您的训练循环中累积历史记录，因为丢失是具有自动记录历史的可微分变量。 您可以通过编写total_loss + = float（loss）来解决此问题。  
+在这里，total_loss在您的训练循环中累积历史记录，因为丢失是具有自动记录历史的可微分变量。 您可以通过编写total_loss + = float(loss）来解决此问题。  
 
 此问题的其他实例：[1](https://discuss.pytorch.org/t/resolved-gpu-out-of-memory-error-with-batch-size-1/3719)。  
 
@@ -48,10 +48,10 @@ return output
 
 这种现象的技术术语是随着时间的推移而反向传播，并且有很多关于如何实现截断BPTT的参考，包括在单词语言模型示例中; 截断由重新打包功能处理，如本论坛帖子中所述。
 
-**不要使用太大的线性图层。** 线性层nn.Linear（m，n）使用O(nm)存储器：也就是说，权重的存储器需求与特征的数量成比例。 以这种方式很容易占用你的存储（并且记住，你将至少需要两倍存储权值的内存量，因为你还需要存储梯度。）
+**不要使用太大的线性图层。** 线性层nn.Linear(m，n）使用O(nm)存储器：也就是说，权重的存储器需求与特征的数量成比例。 以这种方式很容易占用你的存储(并且记住，你将至少需要两倍存储权值的内存量，因为你还需要存储梯度。）
 
 
-## My GPU memory isn’t freed properly  
+## My GPU memory isn't freed properly  
 
 PyTorch使用缓存内存分配器来加速内存分配。 因此，`nvidia-smi`中显示的值通常不会反映真实的内存使用情况。 有关GPU内存管理的更多详细信息，请参阅[内存管理](cuda.html#cuda-memory-management) 。
 
@@ -61,7 +61,7 @@ PyTorch使用缓存内存分配器来加速内存分配。 因此，`nvidia-smi`
 
 您可能正在数据集中使用其他库来生成随机数。 例如，当通过`fork`启动工作程序子进程时，NumPy的RNG会重复。有关如何使用`worker_init_fn`选项在工作程序中正确设置随机种子的文档，请参阅torch.utils.data.DataLoader文档。  
 
-## My recurrent network doesn’t work with data parallelism  
+## My recurrent network doesn't work with data parallelism  
 
 在具有`DataParallel`或`data_parallel()`的模块中使用`pack sequence -> recurrent network -> unpack sequence`模式时有一个非常微妙的地方。每个设备上的`forward()`的输入只会是整个输入的一部分。由于默认情况下，解包操作`torch.nn.utils.rnn.pad_packed_sequence()`仅填充到其所见的最长输入，即该特定设备上的最长输入，所以在将结果收集在一起时会发生尺寸的不匹配。因此，您可以利用`pad_packed_sequence()`的 `total_length`参数来确保`forward()`调用返回相同长度的序列。例如，你可以写：
 
@@ -72,7 +72,7 @@ from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 class MyModule(nn.Module):
     #  ... __init__, 以及其他访求
 
-    # padding_input 的形状是[B x T x *]（batch_first 模式），包含按长度排序的序列
+    # padding_input 的形状是[B x T x *](batch_first 模式），包含按长度排序的序列
     # B 是批量大小
     # T 是最大序列长度
     def forward(self, padded_input, input_lengths):
@@ -89,4 +89,4 @@ dp_m = nn.DataParallel(m)
 
 ```  
 
-另外，在批量的维度为dim 1（即 batch_first = False ）时需要注意数据的并行性。在这种情况下，pack_padded_sequence 函数的的第一个参数 padding_input 维度将是 [T x B x *] ，并且应该沿dim 1 （第1轴）分散，但第二个参数 input_lengths 的维度为 [B]，应该沿dim 0 （第0轴）分散。需要额外的代码来操纵张量的维度。
+另外，在批量的维度为dim 1(即 batch_first = False )时需要注意数据的并行性。在这种情况下，pack_padded_sequence 函数的的第一个参数 padding_input 维度将是 [T x B x *] ，并且应该沿dim 1 (第1轴）分散，但第二个参数 input_lengths 的维度为 [B]，应该沿dim 0 (第0轴）分散。需要额外的代码来操纵张量的维度。

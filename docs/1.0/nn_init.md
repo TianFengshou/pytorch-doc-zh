@@ -200,8 +200,8 @@ torch.nn.init.kaiming_uniform_(tensor, a=0, mode='fan_in', nonlinearity='leaky_r
 
 *   **tensor** – n 维 `torch.Tensor`
 *   **a** – 该层后面一层的整流函数中负的斜率 (默认为 0，此时为 Relu)
-*   **mode** – ‘fan_in’ (default) 或者 ‘fan_out’。使用fan_in保持weights的方差在前向传播中不变；使用fan_out保持weights的方差在反向传播中不变。
-*   **nonlinearity** – 非线性函数 (`nn.functional` 中的名字)，推荐只使用 ‘relu’ 或 ‘leaky_relu’ (default)。
+*   **mode** – 'fan_in' (default) 或者 'fan_out'。使用fan_in保持weights的方差在前向传播中不变；使用fan_out保持weights的方差在反向传播中不变。
+*   **nonlinearity** – 非线性函数 (`nn.functional` 中的名字)，推荐只使用 'relu' 或 'leaky_relu' (default)。
 
 
 例子
@@ -227,8 +227,8 @@ torch.nn.init.kaiming_normal_(tensor, a=0, mode='fan_in', nonlinearity='leaky_re
 
 *   **tensor** – n 维 `torch.Tensor`
 *   **a** – 该层后面一层的整流函数中负的斜率 (默认为 0，此时为 Relu)
-*   **mode** – ‘fan_in’ (default) 或者 ‘fan_out’。使用fan_in保持weights的方差在前向传播中不变；使用fan_out保持weights的方差在反向传播中不变。
-*   **nonlinearity** – 非线性函数 (`nn.functional` 中的名字)，推荐只使用 ‘relu’ 或 ‘leaky_relu’ (default)。
+*   **mode** – 'fan_in' (default) 或者 'fan_out'。使用fan_in保持weights的方差在前向传播中不变；使用fan_out保持weights的方差在反向传播中不变。
+*   **nonlinearity** – 非线性函数 (`nn.functional` 中的名字)，推荐只使用 'relu' 或 'leaky_relu' (default)。
 
 
 例子
@@ -243,7 +243,7 @@ torch.nn.init.kaiming_normal_(tensor, a=0, mode='fan_in', nonlinearity='leaky_re
 torch.nn.init.orthogonal_(tensor, gain=1)
 ```
 
-用论文 “Exact solutions to the nonlinear dynamics of learning in deep linear neural networks” - Saxe, A. et al. (2013) 中描述的（半）正定矩阵初始化输入 `Tensor`。输入张量必须至少有 2 维，如果输入张量的维度大于 2， 则对后续维度进行放平操作。
+用论文 “Exact solutions to the nonlinear dynamics of learning in deep linear neural networks” - Saxe, A. et al. (2013) 中描述的(半）正定矩阵初始化输入 `Tensor`。输入张量必须至少有 2 维，如果输入张量的维度大于 2， 则对后续维度进行放平操作。
 
  
 参数： 

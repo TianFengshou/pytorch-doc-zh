@@ -127,8 +127,8 @@ state_dict()
 
 它包含两部分内容:
 
-*   state - 一个包含当前优化状态的字典（dict）, 字典里的内容因优化器的不同而变换.
-*   param_groups - 一个包含所有参数组的字典（dict）.
+*   state - 一个包含当前优化状态的字典(dict）, 字典里的内容因优化器的不同而变换.
+*   param_groups - 一个包含所有参数组的字典(dict）.
 
 ```py
 step(closure)
@@ -267,7 +267,7 @@ class torch.optim.LBFGS(params, lr=1, max_iter=20, max_eval=None, tolerance_grad
 
 警告：
 
-这个 optimizer 不支持为每个参数单独设置选项以及不支持参数组（只能有一个）.
+这个 optimizer 不支持为每个参数单独设置选项以及不支持参数组(只能有一个）.
 
 警告：
 
@@ -334,7 +334,7 @@ step(closure=None)
 class torch.optim.SGD(params, lr=<object object>, momentum=0, dampening=0, weight_decay=0, nesterov=False)
 ```
 
-实现随机梯度下降算法（ momentum 可选）.
+实现随机梯度下降算法 (momentum 可选）.
 
 Nesterov 动量基于 [On the importance of initialization and momentum in deep learning](http://www.cs.toronto.edu/%7Ehinton/absps/momentum.pdf) 中的公式.
 
@@ -463,18 +463,18 @@ class torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma, last_epoch=-1)
 class torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, verbose=False, threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=0, eps=1e-08)
 ```
 
-当一个指标已经停止提升时减少学习率.模型通常受益于通过一次2-10的学习停止因素减少学习率 这个调度程序读取一个指标质量 以及看到 ‘patience’ 的数量在一个 epoch 里面如果没有提升, 这时学习率已经减小.
+当一个指标已经停止提升时减少学习率.模型通常受益于通过一次2-10的学习停止因素减少学习率 这个调度程序读取一个指标质量 以及看到 'patience' 的数量在一个 epoch 里面如果没有提升, 这时学习率已经减小.
 
 Args: * optimizer (Optimizer): 封装好的优化器.
 
-> mode (str): `min`, `max` 其中一个. 在 `min` 模块下,当质量监测已经 停止下降时 lr 将被减少; 在 `max` 模块下 当质量监测已经停止上升时 lr 将 被减少. 默认值: ‘min’.
+> mode (str): `min`, `max` 其中一个. 在 `min` 模块下,当质量监测已经 停止下降时 lr 将被减少; 在 `max` 模块下 当质量监测已经停止上升时 lr 将 被减少. 默认值: 'min'.
 
 *   `factor (float)`: 哪个学习率将会被减少的影响因子 .
 *   new_lr = lr * factor. 默认值: 0.1.
 *   `patience (int)`: epoch 中没有改善的次数, 学习率将会降低. . 默认值: 10.
 *   `verbose (bool)`: 若为 `True`, 每次更新打印信息到控制台输出. 默认值: `False`.
 *   `threshold (float)`: 测量新的最佳阈值, 只关注有重大意义的改变. 默认值: 1e-4.
-*   `threshold_mode (str)`: `rel`, `abs` 中的一个. 在 `rel` 模式下, dynamic_threshold = best * ( 1 + threshold ) 在 ‘max’ 模式下或者在 `min` 模式下 best * ( 1 - threshold ) . 在 `abs` 模式下, dynamic_threshold = best + threshold 在 `max` 模式下或者在 `min` 模式下 best - threshold . 默认值: ‘rel’.
+*   `threshold_mode (str)`: `rel`, `abs` 中的一个. 在 `rel` 模式下, dynamic_threshold = best * ( 1 + threshold ) 在 'max' 模式下或者在 `min` 模式下 best * ( 1 - threshold ) . 在 `abs` 模式下, dynamic_threshold = best + threshold 在 `max` 模式下或者在 `min` 模式下 best - threshold . 默认值: 'rel'.
 *   `cooldown (int)`: lr 已经减少之后去等待最佳的正常操作之前的 epoch 数目. 默认值: 0.
 *   `min_lr (float or list)`: 一个列表的标量.所有参数组或每个组的学习率下限. 默认值: 0.
 *   `eps (float)`: lr 最小的衰减值适应于. 如果新 lr 和旧 lr 之间的差异小于 eps,更新可以忽略. 默认值: 1e-8.

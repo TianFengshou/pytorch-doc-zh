@@ -127,7 +127,7 @@ new_tensor(data, dtype=None, device=None, requires_grad=False) → Tensor
 
 警告
 
-当 data 是一个 tensor `x`, [`new_tensor()`](#torch.Tensor.new_tensor "torch.Tensor.new_tensor") 读取 x 的 ‘data’ 并且创建一个叶子变量. 因此 `tensor.new_tensor(x)` 等价于 `x.clone().detach()` 并且 `tensor.new_tensor(x, requires_grad=True)` 等价于 `x.clone().detach().requires_grad_(True)`. 推荐使用 `clone()` 和 `detach()`.
+当 data 是一个 tensor `x`, [`new_tensor()`](#torch.Tensor.new_tensor "torch.Tensor.new_tensor") 读取 x 的 'data' 并且创建一个叶子变量. 因此 `tensor.new_tensor(x)` 等价于 `x.clone().detach()` 并且 `tensor.new_tensor(x, requires_grad=True)` 等价于 `x.clone().detach().requires_grad_(True)`. 推荐使用 `clone()` 和 `detach()`.
 
 参数: 
 
@@ -1638,7 +1638,7 @@ qr() -> (Tensor, Tensor)
 random_(from=0, to=None, *, generator=None) → Tensor
 ```
 
-  用离散均匀分布介于  `[from, to - 1]` 采样的数字填充 `self` tensor. 如果没有特别指定, 这些采样的数值被 `self` tensor’s 数据类型界定. 然而, 对于浮点型, 如果没有特别指定, 范围将是 `[0, 2^mantissa]` 来确保每一个值是可表示的. 例如, `torch.tensor(1, dtype=torch.double).random_()` 将会被设为 `[0, 2^53]`.
+  用离散均匀分布介于  `[from, to - 1]` 采样的数字填充 `self` tensor. 如果没有特别指定, 这些采样的数值被 `self` tensor's 数据类型界定. 然而, 对于浮点型, 如果没有特别指定, 范围将是 `[0, 2^mantissa]` 来确保每一个值是可表示的. 例如, `torch.tensor(1, dtype=torch.double).random_()` 将会被设为 `[0, 2^53]`.
 
 ```py
 reciprocal() → Tensor
@@ -1766,7 +1766,7 @@ resize_(*sizes) → Tensor
 
 警告
 
-这是一个底层的操作. 存储被重新解释为C-contiguous, 忽略当前stride（除非目标大小等于当前大小, 在这种情况下tensor保持不变）.在大多数情况下, 您将要使用 [`view()`](#torch.Tensor.view "torch.Tensor.view"), 它会检查连续性, 或者 [`reshape()`](#torch.Tensor.reshape "torch.Tensor.reshape"), 在必要的时候会拷贝数据. 如果想要改变大小并且自定义stride, 见 [`set_()`](#torch.Tensor.set_ "torch.Tensor.set_").
+这是一个底层的操作. 存储被重新解释为C-contiguous, 忽略当前stride(除非目标大小等于当前大小, 在这种情况下tensor保持不变）.在大多数情况下, 您将要使用 [`view()`](#torch.Tensor.view "torch.Tensor.view"), 它会检查连续性, 或者 [`reshape()`](#torch.Tensor.reshape "torch.Tensor.reshape"), 在必要的时候会拷贝数据. 如果想要改变大小并且自定义stride, 见 [`set_()`](#torch.Tensor.set_ "torch.Tensor.set_").
 
 | 参数: | **sizes** (_torch.Size_ _or_ _int..._) – 期望的大小 |
 | --- | --- |
