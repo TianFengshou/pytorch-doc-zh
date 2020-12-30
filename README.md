@@ -13,21 +13,34 @@
     <td colspan="2"><a title="Pytorch 最新 英文文档" href="https://pytorch.org/docs/master/" target="_blank"><font size="5">最新 英文文档</font></a></td>
   </tr>
   <tr align="center">
-    <td colspan="2"><a title="Pytorch 1.0 中文版本" href="https://pytorch.apachecn.org/docs/1.0/" target="_blank"><font size="5">1.0 中文版本</font></a></td>
-    <td colspan="2"><a title="Pytorch 1.2 中文版本" href="https://pytorch.apachecn.org/docs/1.2/" target="_blank"><font size="5">1.2 中文版本</font></a></td>
+    <td colspan="4"><a title="Pytorch 1.0 中文版本" href="https://pytorch.apachecn.org/docs/1.0/" target="_blank"><font size="5">1.0 中文版本</font></a></td>
   </tr>
   <tr align="center">
-    <td colspan="2"><a title="Pytorch 0.4 中文版本" href="https://pytorch.apachecn.org/docs/0.4/" target="_blank"><font size="5">0.4 中文版本</font></a></td>
-    <td><a title="Pytorch 0.3 中文版本" href="https://pytorch.apachecn.org/docs/0.3/" target="_blank"><font size="5">0.3 中文版本</font></a></td>
-    <td><a title="Pytorch 0.2 中文版本" href="https://pytorch.apachecn.org/docs/0.2/" target="_blank"><font size="5">0.2 中文版本</font></a></td>
+    <td colspan="2"><a title="Pytorch 0.3 中文版本" href="https://pytorch.apachecn.org/docs/0.3/" target="_blank"><font size="5">0.3 中文版本</font></a></td>
+    <td colspan="2"><a title="Pytorch 0.2 中文版本" href="https://pytorch.apachecn.org/docs/0.2/" target="_blank"><font size="5">0.2 中文版本</font></a></td>
   </tr>
 </table>
 <br/>
 
-> 欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远。
+---
 
-+ [在线阅读](http://pytorch.apachecn.org)
-+ [ApacheCN 学习资源](http://www.apachecn.org/)
+## 介绍
+
+欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远。
+
+> 组织构建[网站]
+
++ GitHub Pages(国外): https://pytorch.apachecn.org
++ Gitee Pages(国内): https://apachecn.gitee.io/pytorch-doc-zh
+
+> 第三方站长[网站]
+
++ pytorch 中文文档: https://www.bookstack.cn/search/result?wd=pytorch
++ 地址A: xxx (欢迎留言，我们完善补充)
+
+> 其他补充
+
++ [ApacheCN 学习资源](http://www.apachecn.org)
 + [PyTorch 中文翻译组 | ApacheCN 713436582](http://shang.qq.com/wpa/qunwpa?idkey=349eb1bbaeeff1cf20408899cbe75669132ef145ff5ee6599f78a77dd144c367)
 
 > 版本特性
@@ -41,6 +54,32 @@
 * 中文文档: <https://pytorch.org/resources>
 
 ![](docs/img/resources.jpg)
+
+## 下载
+
+### Docker
+
+```
+docker pull apachecn0/pytorch-doc-zh
+docker run -tid -p <port>:80 apachecn0/pytorch-doc-zh
+# 访问 http://localhost:{port} 查看文档
+```
+
+### PYPI
+
+```
+pip install pytorch-doc-zh
+pytorch-doc-zh <port>
+# 访问 http://localhost:{port} 查看文档
+```
+
+### NPM
+
+```
+npm install -g pytorch-doc-zh
+pytorch-doc-zh <port>
+# 访问 http://localhost:{port} 查看文档
+```
 
 ## 贡献指南
 
